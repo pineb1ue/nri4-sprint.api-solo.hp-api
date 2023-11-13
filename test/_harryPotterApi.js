@@ -76,4 +76,15 @@ describe('Harry Potter API Server', () => {
             JSON.parse(res.text).should.deep.equal(expected)
         })
     })
+
+    describe('POST /characters - registering harry potter character', () => {
+        it('should return registered character', async () => {
+            const expected = {
+                id: '9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8',
+                name: 'Test',
+            }
+            const res = await request.post('/characters').send(expected)
+            JSON.parse(res.text).should.deep.equal(expected)
+        })
+    })
 })
