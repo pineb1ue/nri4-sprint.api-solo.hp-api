@@ -22,6 +22,12 @@ const setupServer = () => {
         })
     })
 
+    /** GET /characters/:id */
+    app.get('/characters/:id', (req, res) => {
+        const selectedCharacter = hpCharacters.find((character) => character.id === Number(req.params.id))
+        res.send(selectedCharacter)
+    })
+
     /** GET /search/characters */
     app.get('/search/characters', (req, res) => {
         const query = req.query.q
