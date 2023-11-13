@@ -120,4 +120,11 @@ describe('Harry Potter API Server', () => {
             JSON.parse(res.text).should.deep.equal(expected)
         })
     })
+
+    describe('DELETE /characters - Delete harry potter character by id', () => {
+        it('should return status code', async () => {
+            const res = await request.delete('/characters/1')
+            res.should.have.status(200)
+        })
+    })
 })
