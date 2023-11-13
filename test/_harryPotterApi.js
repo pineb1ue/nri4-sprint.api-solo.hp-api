@@ -34,7 +34,7 @@ describe('Harry Potter API Server', () => {
         })
     })
 
-    describe('GET /characters/search - returning characters by query', () => {
+    describe('GET /search/characters - returning characters by query', () => {
         const expected = {
             total_count: 1,
             items: [
@@ -67,12 +67,12 @@ describe('Harry Potter API Server', () => {
             ],
         }
         it('should return Hermione Granger', async () => {
-            const res = await request.get('/characters/search').query({ q: 'Hermione' })
+            const res = await request.get('/search/characters').query({ q: 'Hermione' })
             JSON.parse(res.text).should.deep.equal(expected)
         })
 
         it('should return Hermione Granger', async () => {
-            const res = await request.get('/characters/search').query({ q: 'hermione' })
+            const res = await request.get('/search/characters').query({ q: 'hermione' })
             JSON.parse(res.text).should.deep.equal(expected)
         })
     })

@@ -22,8 +22,8 @@ const setupServer = () => {
         })
     })
 
-    /** GET /characters/search */
-    app.get('/characters/search', (req, res) => {
+    /** GET /search/characters */
+    app.get('/search/characters', (req, res) => {
         const query = req.query.q
         const results = hpCharacters.filter((character) => {
             return character.name.toLowerCase().includes(query.toLowerCase())
