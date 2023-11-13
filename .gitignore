@@ -1,3 +1,6 @@
+# My Settings
+.env.local
+
 # Logs
 logs
 *.log
