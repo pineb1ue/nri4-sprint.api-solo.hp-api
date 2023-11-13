@@ -1,5 +1,5 @@
 const express = require('express')
-const hpData = require('./data/characters.json')
+const hpData = require('../data/characters.json')
 
 const setupServer = () => {
     const app = express()
