@@ -8,11 +8,16 @@ const setupServer = () => {
 
     /** GET /api/characters */
     app.get('/characters', (req, res) => {
+        let characters
         if (req.query.limit) {
-            res.json({ result: hpData.characters.slice(0, req.query.limit) })
+            characters = hpData.characters.slice(0, req.query.limit)
         } else {
-            res.json({ result: hpData.characters })
+            characters = hpData.characters
         }
+        res.json({
+            total_count: characters.length,
+            items: characters,
+        })
     })
 
     /** GET /api/characters/search */
@@ -21,7 +26,7 @@ const setupServer = () => {
         const results = hpData.characters.filter((character) => {
             return character.name.toLowerCase().includes(query.toLowerCase())
         })
-        res.json({ result: results })
+        res.json({ total_count: results.length, items: results })
     })
 
     return app
