@@ -2,7 +2,7 @@ const chai = require('chai')
 const chaiHttp = require('chai-http')
 
 const { setupServer } = require('../src/server')
-const hpData = require('../src/data/characters.json')
+const hpData = require('../data/characters.json')
 
 chai.use(chaiHttp)
 chai.should()
@@ -40,7 +40,6 @@ describe('Harry Potter API Server', () => {
             const expected = {
                 id: 2,
                 name: 'Hermione Granger',
-                alternate_names: [],
                 species: 'human',
                 gender: 'female',
                 house: 'Gryffindor',
@@ -50,16 +49,10 @@ describe('Harry Potter API Server', () => {
                 ancestry: 'muggleborn',
                 eyeColour: 'brown',
                 hairColour: 'brown',
-                wand: {
-                    wood: 'vine',
-                    core: 'dragon heartstring',
-                    length: 10.75,
-                },
                 patronus: 'otter',
                 hogwartsStudent: true,
                 hogwartsStaff: false,
                 actor: 'Emma Watson',
-                alternate_actors: [],
                 alive: true,
                 image: 'https://ik.imagekit.io/hpapi/hermione.jpeg',
             }
@@ -74,7 +67,6 @@ describe('Harry Potter API Server', () => {
                 {
                     id: 2,
                     name: 'Hermione Granger',
-                    alternate_names: [],
                     species: 'human',
                     gender: 'female',
                     house: 'Gryffindor',
@@ -84,16 +76,10 @@ describe('Harry Potter API Server', () => {
                     ancestry: 'muggleborn',
                     eyeColour: 'brown',
                     hairColour: 'brown',
-                    wand: {
-                        wood: 'vine',
-                        core: 'dragon heartstring',
-                        length: 10.75,
-                    },
                     patronus: 'otter',
                     hogwartsStudent: true,
                     hogwartsStaff: false,
                     actor: 'Emma Watson',
-                    alternate_actors: [],
                     alive: true,
                     image: 'https://ik.imagekit.io/hpapi/hermione.jpeg',
                 },
@@ -113,7 +99,7 @@ describe('Harry Potter API Server', () => {
     describe('POST /characters - registering harry potter character', () => {
         it('should return registered character', async () => {
             const expected = {
-                id: '9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8',
+                id: '11',
                 name: 'Test',
             }
             const res = await request.post('/characters').send(expected)
@@ -126,7 +112,6 @@ describe('Harry Potter API Server', () => {
             const expected = {
                 id: 2,
                 name: 'Test',
-                alternate_names: [],
                 species: 'human',
                 gender: 'female',
                 house: 'Gryffindor',
@@ -136,16 +121,10 @@ describe('Harry Potter API Server', () => {
                 ancestry: 'muggleborn',
                 eyeColour: 'brown',
                 hairColour: 'brown',
-                wand: {
-                    wood: 'vine',
-                    core: 'dragon heartstring',
-                    length: 10.75,
-                },
                 patronus: 'otter',
                 hogwartsStudent: true,
                 hogwartsStaff: false,
                 actor: 'Emma Watson',
-                alternate_actors: [],
                 alive: true,
                 image: 'https://ik.imagekit.io/hpapi/hermione.jpeg',
             }

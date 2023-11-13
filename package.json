@@ -10,6 +10,7 @@
         "dev": "nodemon ./src/index.js",
         "lint": "eslint --fix --ext .js .",
         "test": "mocha test && npm run lint",
+        "test-it": "knex migrate:down && knex migrate:up && knex seed:run && mocha test && npm run lint",
         "migrate": "knex migrate:latest",
         "seed": "knex seed:run"
     },

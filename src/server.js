@@ -1,20 +1,18 @@
 const express = require('express')
-const hpData = require('./data/characters.json')
+const model = require('./model')
 
 const setupServer = () => {
     const app = express()
     app.use(express.json())
     app.use(express.text())
 
-    let hpCharacters = hpData.characters
-
     /** GET /characters */
-    app.get('/characters', (req, res) => {
+    app.get('/characters', async (req, res) => {
         let characters
         if (req.query.limit) {
-            characters = hpCharacters.slice(0, req.query.limit)
+            characters = await model.getAll(req.query.limit)
         } else {
-            characters = hpCharacters
+            characters = await model.getAll()
         }
         res.json({
             total_count: characters.length,
@@ -23,43 +21,42 @@ const setupServer = () => {
     })
 
     /** GET /characters/:id */
-    app.get('/characters/:id', (req, res) => {
-        const selectedCharacter = hpCharacters.find((character) => character.id === Number(req.params.id))
+    app.get('/characters/:id', async (req, res) => {
+        const selectedCharacter = await model.getById(req.params.id)
         res.send(selectedCharacter)
     })
 
     /** GET /search/characters */
-    app.get('/search/characters', (req, res) => {
+    app.get('/search/characters', async (req, res) => {
         const query = req.query.q
-        const results = hpCharacters.filter((character) => {
-            return character.name.toLowerCase().includes(query.toLowerCase())
-        })
+        const results = await model.search(query)
         res.json({ total_count: results.length, items: results })
     })
 
     /** POST /characters */
-    app.post('/characters', (req, res) => {
-        hpCharacters.push(req.body)
-        res.send(req.body)
+    app.post('/characters', async (req, res) => {
+        const reqBody = req.body
+        await model.create(reqBody)
+        res.send(reqBody)
     })
 
     /** PATCH /characters/:id */
-    app.patch('/characters/:id', (req, res) => {
+    app.patch('/characters/:id', async (req, res) => {
         const reqBody = req.body
-        const selectedCharacter = hpCharacters.find((character) => character.id === Number(req.params.id))
-
-        Object.keys(reqBody).forEach((key) => {
-            if (Object.keys(selectedCharacter).includes(key)) {
-                selectedCharacter[key] = reqBody[key]
-            }
-        })
-        res.send(selectedCharacter)
+        const columns = await model.getColumnNames()
+        const columnNames = Object.keys(columns)
+        const selectedCharacter = await model.update(req.params.id, reqBody, columnNames)
+        res.send(selectedCharacter[0])
     })
 
     /** DELETE /characters/:id */
-    app.delete('/characters/:id', (req, res) => {
-        hpCharacters = hpCharacters.filter((character) => character.id !== Number(req.params.id))
-        res.status(200).send()
+    app.delete('/characters/:id', async (req, res) => {
+        const deletedCharacter = await model.delete(req.params.id)
+        if (deletedCharacter > 0) {
+            res.status(200).send()
+        } else {
+            res.status(404).json({ error: 'Character not found' })
+        }
     })
 
     return app
