@@ -6,7 +6,7 @@ const setupServer = () => {
     app.use(express.json())
     app.use(express.text())
 
-    const hpCharacters = hpData.characters
+    let hpCharacters = hpData.characters
 
     /** GET /characters */
     app.get('/characters', (req, res) => {
@@ -48,6 +48,12 @@ const setupServer = () => {
             }
         })
         res.send(selectedCharacter)
+    })
+
+    /** DELETE /characters/:id */
+    app.delete('/characters/:id', (req, res) => {
+        hpCharacters = hpCharacters.filter((character) => character.id !== Number(req.params.id))
+        res.status(200).send()
     })
 
     return app
