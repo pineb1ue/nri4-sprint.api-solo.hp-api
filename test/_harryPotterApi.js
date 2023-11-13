@@ -99,7 +99,7 @@ describe('Harry Potter API Server', () => {
     describe('POST /characters - registering harry potter character', () => {
         it('should return registered character', async () => {
             const expected = {
-                id: '9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8',
+                id: '11',
                 name: 'Test',
             }
             const res = await request.post('/characters').send(expected)
