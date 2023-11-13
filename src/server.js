@@ -8,7 +8,7 @@ const setupServer = () => {
 
     const hpCharacters = hpData.characters
 
-    /** GET /api/characters */
+    /** GET /characters */
     app.get('/characters', (req, res) => {
         let characters
         if (req.query.limit) {
@@ -22,7 +22,7 @@ const setupServer = () => {
         })
     })
 
-    /** GET /api/characters/search */
+    /** GET /characters/search */
     app.get('/characters/search', (req, res) => {
         const query = req.query.q
         const results = hpCharacters.filter((character) => {
@@ -31,13 +31,13 @@ const setupServer = () => {
         res.json({ total_count: results.length, items: results })
     })
 
-    /** POST /api/characters */
+    /** POST /characters */
     app.post('/characters', (req, res) => {
         hpCharacters.push(req.body)
         res.send(req.body)
     })
 
-    /** PATCH /api/characters/:id */
+    /** PATCH /characters/:id */
     app.patch('/characters/:id', (req, res) => {
         const reqBody = req.body
         const selectedCharacter = hpCharacters.find((character) => character.id === Number(req.params.id))
