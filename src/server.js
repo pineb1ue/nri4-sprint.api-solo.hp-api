@@ -37,6 +37,19 @@ const setupServer = () => {
         res.send(req.body)
     })
 
+    /** PATCH /api/characters/:id */
+    app.patch('/characters/:id', (req, res) => {
+        const reqBody = req.body
+        const selectedCharacter = hpCharacters.find((character) => character.id === Number(req.params.id))
+
+        Object.keys(reqBody).forEach((key) => {
+            if (Object.keys(selectedCharacter).includes(key)) {
+                selectedCharacter[key] = reqBody[key]
+            }
+        })
+        res.send(selectedCharacter)
+    })
+
     return app
 }
 

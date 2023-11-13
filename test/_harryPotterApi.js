@@ -39,7 +39,7 @@ describe('Harry Potter API Server', () => {
             total_count: 1,
             items: [
                 {
-                    id: '4c7e6819-a91a-45b2-a454-f931e4a7cce3',
+                    id: 2,
                     name: 'Hermione Granger',
                     alternate_names: [],
                     species: 'human',
@@ -84,6 +84,39 @@ describe('Harry Potter API Server', () => {
                 name: 'Test',
             }
             const res = await request.post('/characters').send(expected)
+            JSON.parse(res.text).should.deep.equal(expected)
+        })
+    })
+
+    describe('PATCH /characters - Modifying harry potter character by id', () => {
+        it('should return modified character', async () => {
+            const expected = {
+                id: 2,
+                name: 'Test',
+                alternate_names: [],
+                species: 'human',
+                gender: 'female',
+                house: 'Gryffindor',
+                dateOfBirth: '19-09-1979',
+                yearOfBirth: 1979,
+                wizard: true,
+                ancestry: 'muggleborn',
+                eyeColour: 'brown',
+                hairColour: 'brown',
+                wand: {
+                    wood: 'vine',
+                    core: 'dragon heartstring',
+                    length: 10.75,
+                },
+                patronus: 'otter',
+                hogwartsStudent: true,
+                hogwartsStaff: false,
+                actor: 'Emma Watson',
+                alternate_actors: [],
+                alive: true,
+                image: 'https://ik.imagekit.io/hpapi/hermione.jpeg',
+            }
+            const res = await request.patch('/characters/2').send({ name: 'Test' })
             JSON.parse(res.text).should.deep.equal(expected)
         })
     })
