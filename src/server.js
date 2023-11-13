@@ -15,6 +15,15 @@ const setupServer = () => {
         }
     })
 
+    /** GET /api/characters/search */
+    app.get('/characters/search', (req, res) => {
+        const query = req.query.q
+        const results = hpData.characters.filter((character) => {
+            return character.name.toLowerCase().includes(query.toLowerCase())
+        })
+        res.json({ result: results })
+    })
+
     return app
 }
 

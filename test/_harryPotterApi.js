@@ -27,4 +27,44 @@ describe('Harry Potter API Server', () => {
             JSON.parse(res.text).result.should.deep.equal(expected.slice(0, 5))
         })
     })
+
+    describe('GET /characters/search - returning characters by query', () => {
+        const expected = [
+            {
+                id: '4c7e6819-a91a-45b2-a454-f931e4a7cce3',
+                name: 'Hermione Granger',
+                alternate_names: [],
+                species: 'human',
+                gender: 'female',
+                house: 'Gryffindor',
+                dateOfBirth: '19-09-1979',
+                yearOfBirth: 1979,
+                wizard: true,
+                ancestry: 'muggleborn',
+                eyeColour: 'brown',
+                hairColour: 'brown',
+                wand: {
+                    wood: 'vine',
+                    core: 'dragon heartstring',
+                    length: 10.75,
+                },
+                patronus: 'otter',
+                hogwartsStudent: true,
+                hogwartsStaff: false,
+                actor: 'Emma Watson',
+                alternate_actors: [],
+                alive: true,
+                image: 'https://ik.imagekit.io/hpapi/hermione.jpeg',
+            },
+        ]
+        it('should return Hermione Granger', async () => {
+            const res = await request.get('/characters/search').query({ q: 'Hermione' })
+            JSON.parse(res.text).result.should.deep.equal(expected)
+        })
+
+        it('should return Hermione Granger', async () => {
+            const res = await request.get('/characters/search').query({ q: 'hermione' })
+            JSON.parse(res.text).result.should.deep.equal(expected)
+        })
+    })
 })
