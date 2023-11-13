@@ -39,7 +39,7 @@ describe('Harry Potter API Server', () => {
             total_count: 1,
             items: [
                 {
-                    id: '4c7e6819-a91a-45b2-a454-f931e4a7cce3',
+                    id: 2,
                     name: 'Hermione Granger',
                     alternate_names: [],
                     species: 'human',
