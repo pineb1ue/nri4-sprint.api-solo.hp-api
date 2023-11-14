@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Harry Potter Characters</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div id="app">
+            <h1>🧙‍♂️ Harry Potter Characters</h1>
+            <button id="loadCharacters">Load Characters</button>
+            <button id="openForm">Add New Character</button>
+            <div id="characterForm" style="display: none">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" />
+                <label for="house">House:</label>
+                <input type="text" id="house" name="house" />
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" name="image" />
+                <button id="addCharacter">Add Character</button>
+            </div>
+            <table id="characterTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>House</th>
+                    </tr>
+                </thead>
+                <tbody id="characterList"></tbody>
+            </table>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
