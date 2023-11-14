@@ -6,7 +6,7 @@ module.exports = {
         if (limit) {
             return knex.select('*').from(CHARACTER_TABLE).limit(limit)
         }
-        return knex.select('*').from(CHARACTER_TABLE)
+        return knex.select('*').from(CHARACTER_TABLE).orderBy('id')
     },
 
     getById(id) {

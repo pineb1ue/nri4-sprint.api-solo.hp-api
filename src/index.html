@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Harry Potter Characters</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div id="app">
+            <h1>🧙‍♂️ Harry Potter Characters</h1>
+
+            <button id="getForm">Load Characters</button>
+            <button id="addForm">Add New Character</button>
+            <button id="updateForm">Update Character</button>
+            <button id="deleteForm">Delete Character</button>
+
+            <div id="addCharacterForm" style="display: none">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" />
+                <label for="house">House:</label>
+                <input type="text" id="house" name="house" />
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" name="image" />
+                <button id="addCharacter">Add Character</button>
+            </div>
+            <div id="updateCharacterForm" style="display: none">
+                <label for="updateId">Id:</label>
+                <input type="text" id="updateId" name="updateId" />
+                <label for="updateName">Name:</label>
+                <input type="text" id="updateName" name="updateName" />
+                <label for="updateHouse">House:</label>
+                <input type="text" id="updateHouse" name="updateHouse" />
+                <label for="updateImage">Image URL:</label>
+                <input type="text" id="updateImage" name="updateImage" />
+                <button id="updateCharacter">Update Character</button>
+            </div>
+            <div id="deleteCharacterForm" style="display: none">
+                <label for="deleteId">Id:</label>
+                <input type="text" id="deleteId" name="deleteId" />
+                <button id="deleteCharacter">Delete Character</button>
+            </div>
+
+            <table id="characterTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>House</th>
+                    </tr>
+                </thead>
+                <tbody id="characterList"></tbody>
+            </table>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
