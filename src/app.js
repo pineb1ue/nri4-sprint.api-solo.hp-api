@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 document.addEventListener('DOMContentLoaded', () => {
     const characterListElement = document.getElementById('characterList')
-    const loadCharactersButton = document.getElementById('loadCharacters')
-    const openFormButton = document.getElementById('openForm')
-    const characterForm = document.getElementById('characterForm')
+    const getFormButton = document.getElementById('getForm')
+
+    const addFormButton = document.getElementById('addForm')
+    const addCharacterForm = document.getElementById('addCharacterForm')
     const addCharacterButton = document.getElementById('addCharacter')
 
     const updateForm = document.getElementById('updateForm')
@@ -14,19 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteCharacterForm = document.getElementById('deleteCharacterForm')
     const deleteCharacterButton = document.getElementById('deleteCharacter')
 
-    loadCharactersButton.addEventListener('click', getAllCharacters)
-    openFormButton.addEventListener('click', () => {
-        characterForm.style.display = 'block'
+    getFormButton.addEventListener('click', getAllCharacters)
+    addFormButton.addEventListener('click', () => {
+        addCharacterForm.style.display = 'block'
         updateCharacterForm.style.display = 'none'
         deleteCharacterForm.style.display = 'none'
     })
     updateForm.addEventListener('click', () => {
-        characterForm.style.display = 'none'
+        addCharacterForm.style.display = 'none'
         updateCharacterForm.style.display = 'block'
         deleteCharacterForm.style.display = 'none'
     })
     deleteForm.addEventListener('click', () => {
-        characterForm.style.display = 'none'
+        addCharacterForm.style.display = 'none'
         updateCharacterForm.style.display = 'none'
         deleteCharacterForm.style.display = 'block'
     })
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 getAllCharacters()
-                characterForm.style.display = 'none'
+                addCharacterForm.style.display = 'none'
             } else {
                 console.error('Failed to add character')
             }
@@ -150,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    loadCharactersButton.addEventListener('click', getAllCharacters)
+    getFormButton.addEventListener('click', getAllCharacters)
 })
 
 function isValidImageUrl(url) {

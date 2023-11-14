@@ -56,7 +56,7 @@ button:hover {
     background-color: #d0a572;
 }
 
-#characterForm,
+#addCharacterForm,
 #updateCharacterForm,
 #deleteCharacterForm {
     display: flex;
@@ -65,8 +65,8 @@ button:hover {
     margin: auto;
 }
 
-#characterForm label,
-#characterForm input,
+#addCharacterForm label,
+#addCharacterForm input,
 #updateCharacterForm label,
 #updateCharacterForm input,
 #deleteCharacterForm label,
@@ -74,7 +74,7 @@ button:hover {
     margin-bottom: 5px;
 }
 
-#characterForm input,
+#addCharacterForm input,
 #updateCharacterForm input,
 #deleteCharacterForm input {
     margin-bottom: 10px;
@@ -82,7 +82,7 @@ button:hover {
     width: calc(100% - 10px);
 }
 
-#characterForm button:hover,
+#addCharacterForm button:hover,
 #updateCharacterForm button:hover,
 #deleteCharacterForm button:hover {
     background-color: #d0a572;
