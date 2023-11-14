@@ -6,8 +6,8 @@
     "author": "",
     "license": "UNLICENSED",
     "scripts": {
-        "start": "node ./src/index.js",
-        "dev": "nodemon ./src/index.js",
+        "start": "node ./server/index.js",
+        "dev": "nodemon ./server/index.js",
         "lint": "eslint --fix --ext .js .",
         "test": "mocha test && npm run lint",
         "test-it": "knex migrate:down && knex migrate:up && knex seed:run && mocha test && npm run lint",
