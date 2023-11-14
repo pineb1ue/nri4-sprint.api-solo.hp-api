@@ -55,16 +55,29 @@ button:hover {
     background-color: #d0a572;
 }
 
-#characterForm {
+#characterForm,
+#updateCharacterForm {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    max-width: 300px;
+    margin: auto;
 }
 
 #characterForm label,
-#characterForm input {
+#characterForm input,
+#updateCharacterForm label,
+#updateCharacterForm input {
     margin-bottom: 5px;
 }
-#characterForm input {
+
+#characterForm input,
+#updateCharacterForm input {
     margin-bottom: 10px;
+    padding: 5px;
+    width: calc(100% - 10px);
+}
+
+#characterForm button:hover,
+#updateCharacterForm button:hover {
+    background-color: #d0a572;
 }

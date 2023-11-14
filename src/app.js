@@ -6,9 +6,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const characterForm = document.getElementById('characterForm')
     const addCharacterButton = document.getElementById('addCharacter')
 
+    const updateForm = document.getElementById('updateForm')
+    const updateCharacterForm = document.getElementById('updateCharacterForm')
+    const updateCharacterButton = document.getElementById('updateCharacter')
+
     loadCharactersButton.addEventListener('click', getAllCharacters)
     openFormButton.addEventListener('click', () => {
         characterForm.style.display = 'block'
+        updateCharacterForm.style.display = 'none'
+    })
+    updateForm.addEventListener('click', () => {
+        characterForm.style.display = 'none'
+        updateCharacterForm.style.display = 'block'
+    })
+
+    updateCharacterButton.addEventListener('click', async () => {
+        const updateId = document.getElementById('updateId').value
+        const updateName = document.getElementById('updateName').value
+        const updateHouse = document.getElementById('updateHouse').value
+        const updateImage = document.getElementById('updateImage').value
+
+        const updatedData = {
+            name: updateName,
+            house: updateHouse,
+            image: updateImage,
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/characters/${updateId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            })
+
+            if (response.ok) {
+                getAllCharacters()
+            } else {
+                console.error('Failed to update character')
+            }
+        } catch (error) {
+            console.error('Error:', error)
+        }
     })
 
     addCharacterButton.addEventListener('click', async () => {

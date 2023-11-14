@@ -8,8 +8,12 @@
     <body>
         <div id="app">
             <h1>🧙‍♂️ Harry Potter Characters</h1>
+
             <button id="loadCharacters">Load Characters</button>
             <button id="openForm">Add New Character</button>
+            <button id="updateForm">Update Character</button>
+            <button id="deleteForm">Delete Character</button>
+
             <div id="characterForm" style="display: none">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" />
@@ -19,6 +23,18 @@
                 <input type="text" id="image" name="image" />
                 <button id="addCharacter">Add Character</button>
             </div>
+            <div id="updateCharacterForm" style="display: none">
+                <label for="updateId">Id:</label>
+                <input type="text" id="updateId" name="updateId" />
+                <label for="updateName">Name:</label>
+                <input type="text" id="updateName" name="updateName" />
+                <label for="updateHouse">House:</label>
+                <input type="text" id="updateHouse" name="updateHouse" />
+                <label for="updateImage">Image URL:</label>
+                <input type="text" id="updateImage" name="updateImage" />
+                <button id="updateCharacter">Update Character</button>
+            </div>
+
             <table id="characterTable">
                 <thead>
                     <tr>
