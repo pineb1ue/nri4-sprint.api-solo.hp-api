@@ -1,10 +1,12 @@
 const express = require('express')
+const cors = require('cors')
 const model = require('./model')
 
 const setupServer = () => {
     const app = express()
     app.use(express.json())
     app.use(express.text())
+    app.use(cors())
 
     /** GET /characters */
     app.get('/characters', async (req, res) => {
