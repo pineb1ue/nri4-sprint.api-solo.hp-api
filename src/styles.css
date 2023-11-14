@@ -29,7 +29,8 @@ table {
     margin-top: 20px;
 }
 
-th, td {
+th,
+td {
     border: 1px solid #b39c82;
     padding: 10px;
     text-align: left;
@@ -56,7 +57,8 @@ button:hover {
 }
 
 #characterForm,
-#updateCharacterForm {
+#updateCharacterForm,
+#deleteCharacterForm {
     display: flex;
     flex-direction: column;
     max-width: 300px;
@@ -66,18 +68,22 @@ button:hover {
 #characterForm label,
 #characterForm input,
 #updateCharacterForm label,
-#updateCharacterForm input {
+#updateCharacterForm input,
+#deleteCharacterForm label,
+#deleteCharacterForm input {
     margin-bottom: 5px;
 }
 
 #characterForm input,
-#updateCharacterForm input {
+#updateCharacterForm input,
+#deleteCharacterForm input {
     margin-bottom: 10px;
     padding: 5px;
     width: calc(100% - 10px);
 }
 
 #characterForm button:hover,
-#updateCharacterForm button:hover {
+#updateCharacterForm button:hover,
+#deleteCharacterForm button:hover {
     background-color: #d0a572;
 }

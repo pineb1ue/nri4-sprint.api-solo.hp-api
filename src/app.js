@@ -10,14 +10,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateCharacterForm = document.getElementById('updateCharacterForm')
     const updateCharacterButton = document.getElementById('updateCharacter')
 
+    const deleteForm = document.getElementById('deleteForm')
+    const deleteCharacterForm = document.getElementById('deleteCharacterForm')
+    const deleteCharacterButton = document.getElementById('deleteCharacter')
+
     loadCharactersButton.addEventListener('click', getAllCharacters)
     openFormButton.addEventListener('click', () => {
         characterForm.style.display = 'block'
         updateCharacterForm.style.display = 'none'
+        deleteCharacterForm.style.display = 'none'
     })
     updateForm.addEventListener('click', () => {
         characterForm.style.display = 'none'
         updateCharacterForm.style.display = 'block'
+        deleteCharacterForm.style.display = 'none'
+    })
+    deleteForm.addEventListener('click', () => {
+        characterForm.style.display = 'none'
+        updateCharacterForm.style.display = 'none'
+        deleteCharacterForm.style.display = 'block'
+    })
+
+    deleteCharacterButton.addEventListener('click', async () => {
+        const deleteId = document.getElementById('deleteId').value
+
+        try {
+            const response = await fetch(`http://localhost:3000/characters/${deleteId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+
+            if (response.ok) {
+                getAllCharacters()
+            } else {
+                console.error('Failed to delete character')
+            }
+        } catch (error) {
+            console.error('Error:', error)
+        }
     })
 
     updateCharacterButton.addEventListener('click', async () => {
