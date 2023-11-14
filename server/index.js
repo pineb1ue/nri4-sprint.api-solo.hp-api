@@ -1,4 +1,4 @@
-const { setupServer } = require('./server')
+const { setupServer } = require('./route')
 
 const server = setupServer()
 const PORT = process.env.PORT || 3000

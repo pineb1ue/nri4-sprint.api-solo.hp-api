@@ -1,4 +1,4 @@
-const knex = require('./knex')
+const knex = require('./config')
 const CHARACTER_TABLE = 'characters'
 
 module.exports = {

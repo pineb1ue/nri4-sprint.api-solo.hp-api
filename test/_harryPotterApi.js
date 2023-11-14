@@ -1,8 +1,8 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 
-const { setupServer } = require('../src/server')
-const hpData = require('../data/characters.json')
+const { setupServer } = require('../server/route')
+const hpData = require('../data/testCharacters.json')
 
 chai.use(chaiHttp)
 chai.should()
