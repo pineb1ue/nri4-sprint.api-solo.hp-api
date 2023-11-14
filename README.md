@@ -1,5 +1,7 @@
 # 🧙‍♂️ Harry Potter API
 
+![image](https://github.com/pineb1ue/nri4-sprint.api-solo.hp-api/assets/46735508/b36fbc08-be45-49ae-b3eb-86f1d26bc5f9)
+
 ## 🏖️ Overview
 
 | method  | path | description |
